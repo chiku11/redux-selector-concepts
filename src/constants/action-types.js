@@ -1,0 +1,2 @@
+export const UPDATE_FIELD_STATE = "UPDATE_FIELD_STATE";
+export const ON_SUBMIT_STATE = "ON_SUBMIT_STATE";

@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, Fragment} from 'react';
+import SimpleForm from './Form';
+import ThankYou from './ThankYou';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const App = () => {
+    const [show,setShow] = useState(true);
+
+    const onSubmit = props => {
+        setShow(false);
+    }
+    return (<Fragment>
+        {show && <SimpleForm onSubmit={onSubmit} />}
+        {!show && <ThankYou />}
+    </Fragment>)
 }
 
 export default App;
