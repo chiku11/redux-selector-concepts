@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container, Row, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import styled from 'styled-components'
-import { UPDATE_FIELD_STATE, ON_SUBMIT_STATE } from './constants/action-types'
+import styled from 'styled-components';
+import { updateField } from './actions/index';
 import { connect } from "react-redux";
 
 const CentredRow = styled(Row)`
   text-align: center;
   display: block;
-`
+`;
 
 export const SimpleForm = props => {
 
@@ -24,7 +24,6 @@ export const SimpleForm = props => {
   }
 
   return (
-
     <Container>
       <CentredRow>
         <h3>A simple form</h3>
@@ -90,12 +89,15 @@ export const SimpleForm = props => {
 }
 
 const mapDispatchToProps = {
-  updateState: (paylod) => ({ type: UPDATE_FIELD_STATE, payload: paylod }),
+  updateState: (paylod) => (updateField(paylod)),
 }
 
 const mapStateToProps = state => {
   return {
-    email: state.form.email
+    email: state.form.email,
+    password: state.form.password,
+    country: state.form.country,
+    maritialstatus: state.form.maritialstatus,
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleForm);
